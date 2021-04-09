@@ -9,6 +9,13 @@ const DetalhesDoLugarTela = (props) => {
   )
 }
 
+DetalhesDoLugarTela.navigationOptions = (dadosNav) => {
+  return {
+    headerTitle: dadosNav.navigation.getParam('tituloLugar')
+  }
+}
+
+
 export default DetalhesDoLugarTela
 
 const styles = StyleSheet.create({})
