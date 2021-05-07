@@ -3,6 +3,7 @@ import { StyleSheet, Text, View, ScrollView, TextInput, Button } from 'react-nat
 import Cores from '../constantes/Cores';
 import * as lugaresActions from '../store/lugares-actions';
 import TiraFoto from '../componentes/TiraFoto'
+import CapturaLocalizacao from '../componentes/CapturaLocalizacao'
 
 import { useDispatch } from 'react-redux';
 
@@ -33,6 +34,7 @@ const NovoLugarTela = (props) => {
           value={novoLugar}
         />
         <TiraFoto onFotoTirada={fotoTirada}/>
+        <CapturaLocalizacao />
         <Button 
           title="Salvar"
           color={Cores.primary}

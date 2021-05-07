@@ -2,6 +2,35 @@ import * as SQLite from 'expo-sqlite';
 
 const db = SQLite.openDatabase('lugares.db');
 
+export const buscarLugares = () => {
+  const promise = new Promise ((resolve, reject) => {
+    db.transaction((tx) => {
+      tx.executeSql(
+        'SELECT * FROM tb_lugar',
+        [],
+        (_, resultado) => {resolve(resultado)},
+        (_, erro) => {reject(erro)}
+      );
+    })
+  })
+  return promise;
+}
+
+export const inserirLugar = (nomeLugar, imagemURI, endereco, lat, lng) => {
+  const promise = new Promise((resolve, reject) => {
+    db.transaction((tx) => {
+      tx.executeSql(
+        'INSERT INTO tb_lugar (nome, imagemURI, endereco, lat, lng) VALUES (?, ?, ?, ?, ?)',
+        [nomeLugar, imagemURI, endereco, lat, lng],
+        (_, resultado) => {resolve(resultado)},
+        (_, erro) => {reject(erro)}
+      );
+    })
+  })
+  return promise;
+}
+
+
 export const init = () => {
   const promise = new Promise ((resolve, reject) => {
     
