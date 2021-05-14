@@ -11,6 +11,7 @@ import Cores from '../constantes/Cores'
 
 import * as Location from 'expo-location';
 import * as Permissions from 'expo-permissions';
+import PreviewDoMapa from './PreviewDoMapa';
 
 const CapturaLocalizacao = (props) => {
 
@@ -54,7 +55,10 @@ const CapturaLocalizacao = (props) => {
 
   return (
     <View style={styles.capturaLocalizacao}>
-      <View style={styles.previewDoMapa}>
+      <PreviewDoMapa 
+        style={styles.previewDoMapa}
+        localizacao={localizacaoSelecionada}
+      >
         {
           estaCapturando ?
           <ActivityIndicator 
@@ -64,7 +68,7 @@ const CapturaLocalizacao = (props) => {
           :
           <Text>Nenhuma localização disponível.</Text>
         }
-      </View>
+      </PreviewDoMapa>
       <Button 
         title="Obter localização"
         color={Cores.primary}
